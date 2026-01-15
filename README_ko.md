@@ -1,4 +1,4 @@
-# makeastar
+# makeastar <img src="logo.png" align="right" width="120" />
 
 별 찍기 패턴을 출력하기 위한 **초경량** 파이썬 패키지입니다.  
 복잡한 반복문 없이, 임포트하고 호출하기만 하면 됩니다.
