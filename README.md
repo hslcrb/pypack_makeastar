@@ -38,6 +38,14 @@ cd pypack_makeastar
 pip install .
 ```
 
+### Docker
+
+You can also run makeastar using Docker:
+```bash
+docker pull ghcr.io/hslcrb/makeastar:latest
+docker run ghcr.io/hslcrb/makeastar:latest
+```
+
 ## Quick Start
 
 ```python

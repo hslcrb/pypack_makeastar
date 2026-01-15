@@ -23,13 +23,20 @@ jobs:
           pip install build twine
       - name: Build package
         run: python -m build
-      - name: Publish to GitHub Packages
-        run: |
-          export TWINE_USERNAME=${{ github.actor }}
-          export TWINE_PASSWORD=${{ secrets.GITHUB_TOKEN }}
-          export TWINE_REPOSITORY_URL=https://pypi.pkg.github.com/${{ github.repository }}
-          python -m twine upload dist/* --verbose
-        continue-on-error: true
+      - name: Log in to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/makeastar:latest
+            ghcr.io/${{ github.repository_owner }}/makeastar:1.0
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
