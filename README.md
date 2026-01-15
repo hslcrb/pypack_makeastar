@@ -6,7 +6,8 @@ No complex loops needed—just import and call.
 ## Features
 
 - **Optimized**: Uses generator expressions and f-strings for maximum efficiency.
-- **Easy to Use**: Intuitive function names (e.g., `star.pyramid(5)`).
+- **Easy to Use**: Intuitive function names and **Aliases** (e.g., `star.samgak(5)` for triangle).
+- **Flexible**: Supports custom width and height for triangles.
 - **Lightweight**: Minimal code footprint.
 
 ## Installation
@@ -26,35 +27,47 @@ pip install .
 ```python
 import star
 
-# 1. Triangle
-star.triangle(5)
+# 1. Triangle (Aliases: samgak, tri)
+star.triangle(5)       # Fixed width=5, default height=5
+star.samgak(5, 10)     # Width=5, Height=10
+star.tri(5)
 
-# 2. Inverted Triangle
+# 2. Right Triangle (Aliases: usamgak, rtri)
+star.right_triangle(5)
+star.usamgak(5)
+
+# 3. Inverted Triangle (Aliases: yeoksamgak, inv)
 star.inverted(5)
+star.yeoksamgak(5)
 
-# 3. Pyramid
+# 4. Inverted Right Triangle (Aliases: yeokusamgak, rinv)
+star.inverted_right(5)
+
+# 5. Pyramid (Aliases: py)
 star.pyramid(5)
 
-# 4. Diamond
+# 6. Diamond (Aliases: dia)
 star.diamond(5)
 
-# 5. Hourglass
+# 7. Hourglass (Aliases: morae)
 star.hourglass(5)
 
-# 6. Arrow (Right)
+# 8. Arrow (Aliases: hwasal)
 star.arrow(5)
 ```
 
-## Supported Patterns
+## Functions & Aliases
 
-| Function | Description |
-|----------|-------------|
-| `triangle(n)` | Prints a left-aligned right triangle. |
-| `inverted(n)` | Prints an inverted left-aligned right triangle. |
-| `pyramid(n)` | Prints a centered pyramid. |
-| `diamond(n)` | Prints a diamond shape. |
-| `hourglass(n)` | Prints an hourglass shape. |
-| `arrow(n)` | Prints a right-pointing arrow. |
+| Function | Alias | Description | Parameters |
+|----------|-------|-------------|------------|
+| `triangle` | `samgak`, `tri` | Left-aligned triangle | `(width, height=5, char='*')` |
+| `right_triangle` | `usamgak`, `rtri` | Right-aligned triangle | `(width, height=5, char='*')` |
+| `inverted` | `yeoksamgak`, `inv` | Inverted left-aligned triangle | `(width, height=5, char='*')` |
+| `inverted_right` | `yeokusamgak`, `rtinv`| Inverted right-aligned triangle | `(width, height=5, char='*')` |
+| `pyramid` | `py` | Centered pyramid | `(n, char='*')` |
+| `diamond` | `dia` | Diamond shape | `(n, char='*')` |
+| `hourglass` | `morae` | Hourglass shape | `(n, char='*')` |
+| `arrow` | `hwasal` | Right arrow | `(n, char='*')` |
 
 ## License
 
