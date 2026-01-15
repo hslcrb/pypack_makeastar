@@ -52,7 +52,7 @@ def arrow(n=5, char='*'):
 samgak = tri = triangle
 usamgak = rtri = right_triangle
 yeoksamgak = inv = inverted
-yeokusamgak = rinv = inverted_right
+yeokusamgak = rinv = rtinv = inverted_right
 pyra = pyramid
 dia = diamond
 morae = hourglass

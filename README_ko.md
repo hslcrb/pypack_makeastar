@@ -68,11 +68,11 @@ star.ㅍㄹㅁㄷ(5)
 | 함수 (Function) | 별칭 (Alias / 한국어) | 설명 | 매개변수 |
 |----------|-------|-------------|------------|
 | `triangle` | `samgak`, `tri`, `삼각형`, `삼`, `ㅅㄱ`, `ㅅㄱㅎ` | 좌측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
-| `right_triangle` | `usamgak`, `rtri`, `우측삼각형`, `우삼`, `ㅇㅅㄱ`, `ㅇㅊㅅㄱㅎ` | 우측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
+| `right_triangle` | `usamgak`, `rtri`, `우측삼각형`, `오른쪽삼각형`, `우삼`, `ㅇㅅㄱ`, `ㅇㅊㅅㄱㅎ`, `ㅇㄹㅉㅅㄱㅎ` | 우측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
 | `inverted` | `yeoksamgak`, `inv`, `역삼각형`, `역삼`, `ㅇㅅ`, `ㅇㅅㄱㅎ` | 역 직각 삼각형 | `(width, height=5, char='*')` |
-| `inverted_right` | `yeokusamgak`, `rtinv`, `우측역삼각형`, `우역`, `ㅇㅇ`, `ㅇㅊㅇㅅㄱㅎ`| 우측 정렬 역 직각 삼각형 | `(width, height=5, char='*')` |
+| `inverted_right` | `yeokusamgak`, `rtinv`, `rinv`, `우측역삼각형`, `오른쪽역삼각형`, `우역`, `ㅇㅇ`, `ㅇㅊㅇㅅㄱㅎ`, `ㅇㄹㅉㅇㅅㄱㅎ`| 우측 정렬 역 직각 삼각형 | `(width, height=5, char='*')` |
 | `pyramid` | `pyra`, `피라미드`, `피라`, `ㅍㄹ`, `ㅍㄹㅁㄷ` | 중앙 정렬 피라미드 | `(n, char='*')` |
-| `diamond` | `dia`, `다이아몬드`, `다`, `ㄷㅇ`, `ㄷㅇㅇㅁㄷ` | 다이아몬드 | `(n, char='*')` |
+| `diamond` | `dia`, `다이아몬드`, `다이아`, `다`, `ㄷㅇ`, `ㄷㅇㅇㅁㄷ` | 다이아몬드 | `(n, char='*')` |
 | `hourglass` | `morae`, `모래시계`, `모`, `ㅁㄹ`, `ㅁㄹㅅㄱ` | 모래시계 | `(n, char='*')` |
 | `arrow` | `hwasal`, `화살표`, `화`, `ㅎㅅ`, `ㅎㅅㅍ` | 화살표 | `(n, char='*')` |
 

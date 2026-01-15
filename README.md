@@ -67,7 +67,7 @@ star.arrow(5)
 | `triangle` | `samgak`, `tri` | Left-aligned triangle | `(width, height=5, char='*')` |
 | `right_triangle` | `usamgak`, `rtri` | Right-aligned triangle | `(width, height=5, char='*')` |
 | `inverted` | `yeoksamgak`, `inv` | Inverted left-aligned triangle | `(width, height=5, char='*')` |
-| `inverted_right` | `yeokusamgak`, `rtinv`| Inverted right-aligned triangle | `(width, height=5, char='*')` |
+| `inverted_right` | `yeokusamgak`, `rtinv`, `rinv`| Inverted right-aligned triangle | `(width, height=5, char='*')` |
 | `pyramid` | `pyra` | Centered pyramid | `(n, char='*')` |
 | `diamond` | `dia` | Diamond shape | `(n, char='*')` |
 | `hourglass` | `morae` | Hourglass shape | `(n, char='*')` |
