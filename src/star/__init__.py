@@ -2,50 +2,65 @@ __version__ = "1.0.0"
 __author__ = "Rheehose (Rhee Creative)"
 __email__ = "rheehose@rheehose.com"
 
-def _draw(lines):
-    print('\n'.join(lines))
+import sys
+from typing import Optional
 
-def _calc(w, h, i):
-    # Safe division to calculate width at step i
-    return int(w * i / h)
+def _draw(lines) -> None:
+    # Use write for faster I/O than print
+    sys.stdout.write('\n'.join(lines) + '\n')
 
-def triangle(width, height=None, char='*'):
+def _calc(w: int, h: int, i: int) -> int:
+    # Optimized: integer logic
+    return i if w == h else (w * i) // h
+
+def triangle(width: int, height: Optional[int] = None, char: str = '*') -> None:
     """Left-aligned triangle (samgak)."""
-    if height is None: height = 5
-    _draw(f"{char * _calc(width, height, i)}" for i in range(1, height + 1))
+    # Optimized UX: default height to width for regular triangle
+    h = height if height is not None else width
+    if h == 0: return # Guard clause
+    # Use generator expression for memory efficiency
+    _draw(f"{char * _calc(width, h, i)}" for i in range(1, h + 1))
 
-def right_triangle(width, height=None, char='*'):
+def right_triangle(width: int, height: Optional[int] = None, char: str = '*') -> None:
     """Right-aligned triangle (usamgak)."""
-    if height is None: height = 5
-    _draw(f"{char * _calc(width, height, i):>{width}}" for i in range(1, height + 1))
+    h = height if height is not None else width
+    if h == 0: return
+    _draw(f"{char * _calc(width, h, i):>{width}}" for i in range(1, h + 1))
 
-def inverted(width, height=None, char='*'):
+def inverted(width: int, height: Optional[int] = None, char: str = '*') -> None:
     """Inverted left-aligned triangle (yeoksamgak)."""
-    if height is None: height = 5
-    _draw(f"{char * _calc(width, height, i)}" for i in range(height, 0, -1))
+    h = height if height is not None else width
+    if h == 0: return
+    _draw(f"{char * _calc(width, h, i)}" for i in range(h, 0, -1))
 
-def inverted_right(width, height=None, char='*'):
+def inverted_right(width: int, height: Optional[int] = None, char: str = '*') -> None:
     """Inverted right-aligned triangle (yeokusamgak)."""
-    if height is None: height = 5
-    _draw(f"{char * _calc(width, height, i):>{width}}" for i in range(height, 0, -1))
+    h = height if height is not None else width
+    if h == 0: return
+    _draw(f"{char * _calc(width, h, i):>{width}}" for i in range(h, 0, -1))
 
-def pyramid(n=5, char='*'):
+def pyramid(n: int = 5, char: str = '*') -> None:
     """Centered pyramid."""
-    _draw(f"{char*(2*i-1):^{2*n-1}}".rstrip() for i in range(1, n+1))
+    width = 2 * n - 1
+    # Optimized: f-string formatting handles centering
+    _draw(f"{char * (2 * i - 1):^{width}}".rstrip() for i in range(1, n + 1))
 
-def diamond(n=5, char='*'):
+def diamond(n: int = 5, char: str = '*') -> None:
     """Diamond shape."""
-    top = [f"{char*(2*i-1):^{2*n-1}}".rstrip() for i in range(1, n+1)]
+    width = 2 * n - 1
+    # Optimization: Generate top half once, reuse reversed for bottom
+    top = [f"{char * (2 * i - 1):^{width}}".rstrip() for i in range(1, n + 1)]
     _draw(top + top[-2::-1])
 
-def hourglass(n=5, char='*'):
+def hourglass(n: int = 5, char: str = '*') -> None:
     """Hourglass shape."""
-    top = [f"{char*(2*i-1):^{2*n-1}}".rstrip() for i in range(n, 0, -1)]
+    width = 2 * n - 1
+    top = [f"{char * (2 * i - 1):^{width}}".rstrip() for i in range(n, 0, -1)]
     _draw(top + top[-2::-1])
 
-def arrow(n=5, char='*'):
+def arrow(n: int = 5, char: str = '*') -> None:
     """Right-pointing arrow."""
-    part = [f"{char*i}" for i in range(1, n+1)]
+    part = [f"{char * i}" for i in range(1, n + 1)]
     _draw(part + part[-2::-1])
 
 # Aliases (Easy access & Korean phonetics)
@@ -81,8 +96,8 @@ hwasal = arrow
 # Korean Choseong Aliases (초성)
 ㅅㄱ = ㅅㄱㅎ = triangle
 ㅇㅅㄱ = ㅇㅊㅅㄱㅎ = ㅇㄹㅉㅅㄱㅎ = right_triangle
-ㅇㅅ = ㅇㅅㄱㅎ = inverted  # YeokSam
-ㅇㅇ = ㅇㅊㅇㅅㄱㅎ = ㅇㄹㅉㅇㅅㄱㅎ = inverted_right # WooYeok
+ㅇㅅ = ㅇㅅㄱㅎ = inverted
+ㅇㅇ = ㅇㅊㅇㅅㄱㅎ = ㅇㄹㅉㅇㅅㄱㅎ = inverted_right
 ㅍㄹ = ㅍㄹㅁㄷ = pyramid
 ㄷㅇ = ㄷㅇㅇㅁㄷ = diamond
 ㅁㄹ = ㅁㄹㅅㄱ = hourglass
