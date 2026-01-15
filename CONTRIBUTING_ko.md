@@ -1,4 +1,4 @@
-# makeastar 기여 가이드
+# makeastar 기여 가이드 <img src="logo.png" align="right" width="80" />
 
 `makeastar`에 관심을 가져주셔서 감사합니다! 우리는 모든 분들의 기여를 환영합니다.
 

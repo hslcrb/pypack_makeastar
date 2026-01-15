@@ -1,4 +1,8 @@
-# makeastar <img src="logo.png" align="right" width="120" />
+<div align="center">
+  <img src="logo.png" width="300" alt="makeastar logo" />
+</div>
+
+# makeastar
 
 MINIMALIST Python package for printing star patterns.  
 No complex loops needed - just import and call.

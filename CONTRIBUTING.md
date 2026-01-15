@@ -1,4 +1,4 @@
-# Contributing to makeastar
+# Contributing to makeastar <img src="logo.png" align="right" width="80" />
 
 Thank you for your interest in contributing to `makeastar`! We welcome contributions from everyone.
 
