@@ -1,6 +1,6 @@
 import star
 
-# star.모양 패턴으로 즉시 실행
+# Run instantly using star.shape patterns
 print("=== Pyramid ===")
 star.pyramid(5)
 
