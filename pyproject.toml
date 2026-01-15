@@ -9,7 +9,7 @@ description = "Minimalist star pattern generator using optimized one-liners."
 authors = [{name = "Rheehose (Rhee Creative)", email = "rheehose@rheehose.com"}]
 readme = "README.md"
 requires-python = ">=3.8"
-urls = {Homepage = "https://github.com/hslcrb/makeastar"}
+urls = {Homepage = "https://github.com/hslcrb/pypack_makeastar", Repository = "https://github.com/hslcrb/pypack_makeastar"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
