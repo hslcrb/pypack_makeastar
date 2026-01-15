@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "makeastar"
-version = "1.0.0"
+version = "1.0"
 description = "Minimalist star pattern generator using optimized one-liners."
 authors = [{name = "Rheehose (Rhee Creative)", email = "rheehose@rheehose.com"}]
 readme = "README.md"

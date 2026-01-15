@@ -277,7 +277,7 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ## Changelog
 
-### v1.0.0 (2026-01-15)
+### v1.0 (2026-01-15)
 - Initial stable release
 - 8 pattern types with full Korean/English aliases
 - Flexible input parsing (strings, floats, various separators)
