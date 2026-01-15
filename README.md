@@ -69,6 +69,13 @@ star.arrow(5)
 | `hourglass` | `morae` | Hourglass shape | `(n, char='*')` |
 | `arrow` | `hwasal` | Right arrow | `(n, char='*')` |
 
+## Author
+
+- **Rheehose (Rhee Creative)**
+- Email: rheehose@rheehose.com
+- GitHub: [hslcrb](https://github.com/hslcrb)
+- Copyright © 2008-2026
+
 ## License
 
 This project is licensed under the MIT License.

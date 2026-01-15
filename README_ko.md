@@ -70,6 +70,13 @@ star.ㅍㄹ(5)
 | `hourglass` | `morae`, `모`, `ㅁㄹ` | 모래시계 | `(n, char='*')` |
 | `arrow` | `hwasal`, `화`, `ㅎㅅ` | 화살표 | `(n, char='*')` |
 
+## 작성자 (Author)
+
+- **Rheehose (Rhee Creative)**
+- 이메일: rheehose@rheehose.com
+- GitHub: [hslcrb](https://github.com/hslcrb)
+- Copyright © 2008-2026
+
 ## 라이선스
 
 이 프로젝트는 MIT 라이선스를 따릅니다.

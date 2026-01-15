@@ -1,3 +1,7 @@
+__version__ = "1.0.0"
+__author__ = "Rheehose (Rhee Creative)"
+__email__ = "rheehose@rheehose.com"
+
 def _draw(lines):
     print('\n'.join(lines))
 

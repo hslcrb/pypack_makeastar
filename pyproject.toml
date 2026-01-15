@@ -4,11 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "makeastar"
-version = "0.2.0"
+version = "1.0.0"
 description = "Minimalist star pattern generator using optimized one-liners."
-authors = [{name = "Rheehose", email = "rheehose@example.com"}]
+authors = [{name = "Rheehose (Rhee Creative)", email = "rheehose@rheehose.com"}]
 readme = "README.md"
 requires-python = ">=3.7"
+urls = {Homepage = "https://github.com/hslcrb/makeastar"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
