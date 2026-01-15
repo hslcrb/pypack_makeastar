@@ -4,91 +4,283 @@
 
 # makeastar
 
-MINIMALIST Python package for printing star patterns.  
-No complex loops needed - just import and call.
+A minimalist Python package for printing star patterns with zero boilerplate code.
+
+## Overview
+
+**makeastar** eliminates the need for writing repetitive loops when creating ASCII star patterns. Perfect for Python beginners learning loops or developers who need quick ASCII art generation.
 
 ## Features
 
-- **Optimized**: Uses generator expressions and f-strings for maximum efficiency.
-- **Easy to Use**: Intuitive function names and **Aliases** (e.g., `star.samgak(5)` for triangle).
-- **Flexible**: Supports custom width and height for triangles.
-- **Lightweight**: Minimal code footprint.
+- **Zero Boilerplate**: Single function calls replace complex nested loops
+- **Type-Safe**: Full type hints with Union types for flexible input
+- **Optimized Performance**: Uses `sys.stdout.write`, generator expressions, and efficient algorithms
+- **Multilingual Support**: English and Korean aliases (including phonetic and Choseong variations)
+- **Flexible Input**: Accepts integers, floats, strings - handles commas, dots, spaces gracefully
+- **Production Ready**: Comprehensive unit tests, CI/CD with GitHub Actions
+- **Lightweight**: Minimal dependencies, pure Python implementation
+
+## Requirements
+
+- Python 3.8 or higher
 
 ## Installation
 
+From PyPI (recommended):
 ```bash
 pip install makeastar
 ```
 
-(Or install locally)
-
+From source:
 ```bash
+git clone https://github.com/hslcrb/pypack_makeastar.git
+cd pypack_makeastar
 pip install .
 ```
 
-## Usage
+## Quick Start
 
 ```python
 import star
 
-# 1. Triangle (Aliases: samgak, tri)
-star.triangle(5)       # Fixed width=5, default height=5
-star.samgak(5, 10)     # Width=5, Height=10
-star.tri(5)
-
-# 2. Right Triangle (Aliases: usamgak, rtri)
-star.right_triangle(5)
-star.usamgak(5)
-
-# 3. Inverted Triangle (Aliases: yeoksamgak, inv)
-star.inverted(5)
-star.yeoksamgak(5)
-
-# 4. Inverted Right Triangle (Aliases: yeokusamgak, rinv)
-star.inverted_right(5)
-
-# 5. Pyramid (Aliases: pyra)
+# Basic usage
 star.pyramid(5)
+star.diamond(7)
+star.triangle(10)
 
-# 6. Diamond (Aliases: dia)
-star.diamond(5)
+# Korean aliases
+star.피라미드(5)
+star.다이아몬드(7)
 
-# 7. Hourglass (Aliases: morae)
-star.hourglass(5)
-
-# 8. Arrow (Aliases: hwasal)
-star.arrow(5)
-
-# Flexible Input - Works with strings, floats, and various separators
-star.triangle("5", "10")   # Strings work
-star.triangle(5.5, 10.2)   # Floats work (auto-converted to int)
-
-# Command String Parsing - Handles commas, dots, spaces flexibly
-star.draw("pyramid 5")
-star.draw("triangle, 5, 10")
-star.draw("diamond.7")
+# Flexible input handling
+star.pyramid("5")           # String input
+star.pyramid(5.8)           # Float input (auto-converted)
+star.draw("pyramid 5")      # Command string parsing
+star.draw("triangle, 10, 5") # Handles various separators
 ```
 
-## Functions & Aliases
+## Supported Patterns
 
-| Function | Alias | Description | Parameters |
-|----------|-------|-------------|------------|
-| `triangle` | `samgak`, `tri` | Left-aligned triangle | `(width, height=width, char='*')` |
-| `right_triangle` | `usamgak`, `rtri` | Right-aligned triangle | `(width, height=width, char='*')` |
-| `inverted` | `yeoksamgak`, `inv` | Inverted left-aligned triangle | `(width, height=width, char='*')` |
-| `inverted_right` | `yeokusamgak`, `rtinv`, `rinv`| Inverted right-aligned triangle | `(width, height=width, char='*')` |
-| `pyramid` | `pyra` | Centered pyramid | `(n=5, char='*')` |
-| `diamond` | `dia` | Diamond shape | `(n=5, char='*')` |
-| `hourglass` | `morae` | Hourglass shape | `(n=5, char='*')` |
-| `arrow` | `hwasal` | Right arrow | `(n=5, char='*')` |
+All functions support custom width/height and character parameters.
+
+### 1. Triangle (Left-aligned)
+```python
+star.triangle(5)
+# Output:
+# *
+# **
+# ***
+# ****
+# *****
+```
+**Aliases**: `samgak`, `tri`, `삼각형`, `삼`, `ㅅㄱ`, `ㅅㄱㅎ`
+
+### 2. Right Triangle (Right-aligned)
+```python
+star.right_triangle(5)
+# Output:
+#     *
+#    **
+#   ***
+#  ****
+# *****
+```
+**Aliases**: `usamgak`, `rtri`, `우측삼각형`, `오른쪽삼각형`, `우삼`, `ㅇㅅㄱ`, `ㅇㅊㅅㄱㅎ`, `ㅇㄹㅉㅅㄱㅎ`
+
+### 3. Inverted Triangle
+```python
+star.inverted(5)
+# Output:
+# *****
+# ****
+# ***
+# **
+# *
+```
+**Aliases**: `yeoksamgak`, `inv`, `역삼각형`, `역삼`, `ㅇㅅ`, `ㅇㅅㄱㅎ`
+
+### 4. Inverted Right Triangle
+```python
+star.inverted_right(5)
+# Output:
+# *****
+#  ****
+#   ***
+#    **
+#     *
+```
+**Aliases**: `yeokusamgak`, `rtinv`, `rinv`, `우측역삼각형`, `오른쪽역삼각형`, `우역`, `ㅇㅇ`, `ㅇㅊㅇㅅㄱㅎ`, `ㅇㄹㅉㅇㅅㄱㅎ`
+
+### 5. Pyramid
+```python
+star.pyramid(5)
+# Output:
+#     *
+#    ***
+#   *****
+#  *******
+# *********
+```
+**Aliases**: `pyra`, `피라미드`, `피라`, `ㅍㄹ`, `ㅍㄹㅁㄷ`
+
+### 6. Diamond
+```python
+star.diamond(5)
+# Output:
+#     *
+#    ***
+#   *****
+#  *******
+# *********
+#  *******
+#   *****
+#    ***
+#     *
+```
+**Aliases**: `dia`, `다이아몬드`, `다이아`, `다`, `ㄷㅇ`, `ㄷㅇㅇㅁㄷ`
+
+### 7. Hourglass
+```python
+star.hourglass(5)
+# Output:
+# *********
+#  *******
+#   *****
+#    ***
+#     *
+#    ***
+#   *****
+#  *******
+# *********
+```
+**Aliases**: `morae`, `모래시계`, `모`, `ㅁㄹ`, `ㅁㄹㅅㄱ`
+
+### 8. Arrow
+```python
+star.arrow(5)
+# Output:
+# *
+# **
+# ***
+# ****
+# *****
+# ****
+# ***
+# **
+# *
+```
+**Aliases**: `hwasal`, `화살표`, `화`, `ㅎㅅ`, `ㅎㅅㅍ`
+
+## Advanced Usage
+
+### Custom Dimensions
+```python
+# Triangle with custom width and height
+star.triangle(10, 5)   # Width=10, Height=5
+
+# When height is omitted, it defaults to width
+star.triangle(7)       # Width=7, Height=7
+```
+
+### Custom Characters
+```python
+star.pyramid(5, char='#')
+star.diamond(7, char='@')
+```
+
+### Flexible Input Types
+```python
+# All of these work identically
+star.pyramid(5)
+star.pyramid("5")
+star.pyramid(5.0)
+star.pyramid(5.9)  # Auto-converts to 5
+```
+
+### Command String Parsing
+The `draw()` function accepts flexible command strings:
+```python
+star.draw("pyramid 5")
+star.draw("triangle, 10, 5")
+star.draw("diamond.7")
+star.draw("arrow 3")
+```
+
+### Using Korean Aliases
+```python
+# Full Korean names
+star.피라미드(5)
+star.다이아몬드(7)
+
+# Short forms
+star.피라(5)
+star.다(7)
+
+# Choseong (initial consonants)
+star.ㅍㄹ(5)
+star.ㄷㅇ(7)
+
+# Using Korean package name
+import 별
+별.피라미드(5)
+```
+
+## API Reference
+
+### Triangle Functions
+All triangle functions accept:
+- `width` (int | str | float): Width of the triangle
+- `height` (int | str | float | None): Height (defaults to width if None)
+- `char` (str): Character to use (default: '*')
+
+Functions:
+- `triangle(width, height=None, char='*')` - Left-aligned
+- `right_triangle(width, height=None, char='*')` - Right-aligned
+- `inverted(width, height=None, char='*')` - Inverted left-aligned
+- `inverted_right(width, height=None, char='*')` - Inverted right-aligned
+
+### Symmetric Shape Functions
+All symmetric functions accept:
+- `n` (int | str | float): Size parameter (default: 5)
+- `char` (str): Character to use (default: '*')
+
+Functions:
+- `pyramid(n=5, char='*')` - Centered pyramid
+- `diamond(n=5, char='*')` - Diamond shape
+- `hourglass(n=5, char='*')` - Hourglass shape
+- `arrow(n=5, char='*')` - Right-pointing arrow
+
+### Utility Functions
+- `draw(command: str)` - Parse and execute command strings
+
+## Testing
+
+Run the test suite:
+```bash
+python -m unittest discover tests
+```
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Author
 
-- **Rheehose (Rhee Creative)**
+**Rheehose (Rhee Creative)**
 - Email: rheehose@rheehose.com
-- GitHub: [hslcrb](https://github.com/hslcrb)
-- Copyright © 2008-2026
+- GitHub: [@hslcrb](https://github.com/hslcrb)
+- Copyright 2008-2026
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Changelog
+
+### v1.0.0 (2026-01-15)
+- Initial stable release
+- 8 pattern types with full Korean/English aliases
+- Flexible input parsing (strings, floats, various separators)
+- Type hints and optimized performance
+- Comprehensive unit tests
+- GitHub Actions CI/CD
