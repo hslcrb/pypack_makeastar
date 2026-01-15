@@ -27,7 +27,7 @@ jobs:
         run: |
           export TWINE_USERNAME=${{ github.actor }}
           export TWINE_PASSWORD=${{ secrets.GITHUB_TOKEN }}
-          export TWINE_REPOSITORY_URL=https://pypi.pkg.github.com/${{ github.repository_owner }}/
+          export TWINE_REPOSITORY_URL=https://pypi.pkg.github.com/${{ github.repository }}
           python -m twine upload dist/* --verbose
         continue-on-error: true
       - name: Publish to PyPI
