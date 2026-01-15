@@ -27,13 +27,13 @@ jobs:
         run: |
           export TWINE_USERNAME=${{ github.actor }}
           export TWINE_PASSWORD=${{ secrets.GITHUB_TOKEN }}
-          export TWINE_REPOSITORY_URL=https://pypi.pkg.github.com/${{ github.repository }}
-          python -m twine upload dist/*
+          export TWINE_REPOSITORY_URL=https://pypi.pkg.github.com/${{ github.repository_owner }}/
+          python -m twine upload dist/* --skip-existing --verbose
         continue-on-error: true
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
         run: |
-          python -m twine upload dist/*
+          python -m twine upload dist/* --skip-existing --verbose
         continue-on-error: true
