@@ -1,7 +1,7 @@
 # makeastar
 
 MINIMALIST Python package for printing star patterns.  
-No complex loops needed—just import and call.
+No complex loops needed - just import and call.
 
 ## Features
 
