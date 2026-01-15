@@ -58,16 +58,16 @@ star.arrow(5)
 
 ## 함수 및 별칭 목록
 
-| 함수 (Function) | 별칭 (Alias) | 설명 | 매개변수 |
+| 함수 (Function) | 별칭 (Alias / 한국어) | 설명 | 매개변수 |
 |----------|-------|-------------|------------|
-| `triangle` | `samgak`, `tri` | 좌측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
-| `right_triangle` | `usamgak`, `rtri` | 우측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
-| `inverted` | `yeoksamgak`, `inv` | 역 직각 삼각형 | `(width, height=5, char='*')` |
-| `inverted_right` | `yeokusamgak`, `rtinv`| 우측 정렬 역 직각 삼각형 | `(width, height=5, char='*')` |
-| `pyramid` | `pyra` | 중앙 정렬 피라미드 | `(n, char='*')` |
-| `diamond` | `dia` | 다이아몬드 | `(n, char='*')` |
-| `hourglass` | `morae` | 모래시계 | `(n, char='*')` |
-| `arrow` | `hwasal` | 화살표 | `(n, char='*')` |
+| `triangle` | `samgak`, `tri`, `삼각형` | 좌측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
+| `right_triangle` | `usamgak`, `rtri`, `우측삼각형` | 우측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
+| `inverted` | `yeoksamgak`, `inv`, `역삼각형` | 역 직각 삼각형 | `(width, height=5, char='*')` |
+| `inverted_right` | `yeokusamgak`, `rtinv`, `우측역삼각형`| 우측 정렬 역 직각 삼각형 | `(width, height=5, char='*')` |
+| `pyramid` | `pyra`, `피라미드` | 중앙 정렬 피라미드 | `(n, char='*')` |
+| `diamond` | `dia`, `다이아몬드`, `다이아` | 다이아몬드 | `(n, char='*')` |
+| `hourglass` | `morae`, `모래시계` | 모래시계 | `(n, char='*')` |
+| `arrow` | `hwasal`, `화살표` | 화살표 | `(n, char='*')` |
 
 ## 라이선스
 

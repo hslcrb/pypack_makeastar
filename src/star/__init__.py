@@ -53,3 +53,13 @@ pyra = pyramid
 dia = diamond
 morae = hourglass
 hwasal = arrow
+
+# Korean Hangul Aliases
+삼각형 = triangle
+우측삼각형 = 오른쪽삼각형 = right_triangle
+역삼각형 = inverted
+우측역삼각형 = 오른쪽역삼각형 = inverted_right
+피라미드 = pyramid
+다이아몬드 = 다이아 = diamond
+모래시계 = hourglass
+화살표 = arrow
