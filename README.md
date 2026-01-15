@@ -58,6 +58,15 @@ star.hourglass(5)
 
 # 8. Arrow (Aliases: hwasal)
 star.arrow(5)
+
+# Flexible Input - Works with strings, floats, and various separators
+star.triangle("5", "10")   # Strings work
+star.triangle(5.5, 10.2)   # Floats work (auto-converted to int)
+
+# Command String Parsing - Handles commas, dots, spaces flexibly
+star.draw("pyramid 5")
+star.draw("triangle, 5, 10")
+star.draw("diamond.7")
 ```
 
 ## Functions & Aliases
