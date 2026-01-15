@@ -73,17 +73,17 @@ hwasal = arrow
 우삼 = right_triangle
 역삼 = inverted
 우역 = inverted_right
-피 = pyramid
+피라 = pyramid
 다 = diamond
 모 = hourglass
 화 = arrow
 
 # Korean Choseong Aliases (초성)
-ㅅㄱ = triangle
-ㅇㅅㄱ = right_triangle
-ㅇㅅ = inverted  # YeokSam (Note: WooSam is also ㅇㅅ, but YeokSam takes precedence)
-ㅇㅇ = inverted_right # WooYeok
-ㅍㄹ = pyramid
-ㄷㅇ = diamond
-ㅁㄹ = hourglass
-ㅎㅅ = arrow
+ㅅㄱ = ㅅㄱㅎ = triangle
+ㅇㅅㄱ = ㅇㅊㅅㄱㅎ = ㅇㄹㅉㅅㄱㅎ = right_triangle
+ㅇㅅ = ㅇㅅㄱㅎ = inverted  # YeokSam
+ㅇㅇ = ㅇㅊㅇㅅㄱㅎ = ㅇㄹㅉㅇㅅㄱㅎ = inverted_right # WooYeok
+ㅍㄹ = ㅍㄹㅁㄷ = pyramid
+ㄷㅇ = ㄷㅇㅇㅁㄷ = diamond
+ㅁㄹ = ㅁㄹㅅㄱ = hourglass
+ㅎㅅ = ㅎㅅㅍ = arrow
