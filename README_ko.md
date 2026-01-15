@@ -26,48 +26,49 @@ pip install .
 
 ```python
 import star
+# 또는 한국어 패키지명 사용 가능
+import 별
 
-# 1. 삼각형 (별칭: samgak, tri)
-star.triangle(5)       # 가로=5, 기본 높이=5
-star.samgak(5, 10)     # 가로=5, 높이=10
-star.tri(5)
+# 1. 삼각형 (별칭: 삼, ㅅㄱ)
+별.삼(5)
+star.ㅅㄱ(5)
 
-# 2. 우측 정렬 삼각형 (별칭: usamgak, rtri)
-star.right_triangle(5)
-star.usamgak(5)
+# 2. 우측 정렬 삼각형 (별칭: 우삼, ㅇㅅㄱ)
+별.우삼(5)
 
-# 3. 역삼각형 (별칭: yeoksamgak, inv)
-star.inverted(5)
-star.yeoksamgak(5)
+# 3. 역삼각형 (별칭: 역삼, ㅇㅅ)
+별.역삼(5)
+star.ㅇㅅ(5)
 
-# 4. 우측 정렬 역삼각형 (별칭: yeokusamgak, rinv)
-star.inverted_right(5)
+# 4. 우측 정렬 역삼각형 (별칭: 우역, ㅇㅇ)
+별.우역(5)
 
-# 5. 피라미드 (별칭: pyra)
-star.pyramid(5)
+# 5. 피라미드 (별칭: 피, ㅍㄹ)
+별.피(5)
+star.ㅍㄹ(5)
 
-# 6. 다이아몬드 (별칭: dia)
-star.diamond(5)
+# 6. 다이아몬드 (별칭: 다, ㄷㅇ)
+별.다(5)
 
-# 7. 모래시계 (별칭: morae)
-star.hourglass(5)
+# 7. 모래시계 (별칭: 모, ㅁㄹ)
+별.모(5)
 
-# 8. 화살표 (별칭: hwasal)
-star.arrow(5)
+# 8. 화살표 (별칭: 화, ㅎㅅ)
+별.화(5)
 ```
 
 ## 함수 및 별칭 목록
 
 | 함수 (Function) | 별칭 (Alias / 한국어) | 설명 | 매개변수 |
 |----------|-------|-------------|------------|
-| `triangle` | `samgak`, `tri`, `삼각형` | 좌측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
-| `right_triangle` | `usamgak`, `rtri`, `우측삼각형` | 우측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
-| `inverted` | `yeoksamgak`, `inv`, `역삼각형` | 역 직각 삼각형 | `(width, height=5, char='*')` |
-| `inverted_right` | `yeokusamgak`, `rtinv`, `우측역삼각형`| 우측 정렬 역 직각 삼각형 | `(width, height=5, char='*')` |
-| `pyramid` | `pyra`, `피라미드` | 중앙 정렬 피라미드 | `(n, char='*')` |
-| `diamond` | `dia`, `다이아몬드`, `다이아` | 다이아몬드 | `(n, char='*')` |
-| `hourglass` | `morae`, `모래시계` | 모래시계 | `(n, char='*')` |
-| `arrow` | `hwasal`, `화살표` | 화살표 | `(n, char='*')` |
+| `triangle` | `samgak`, `tri`, `삼`, `ㅅㄱ` | 좌측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
+| `right_triangle` | `usamgak`, `rtri`, `우삼`, `ㅇㅅㄱ` | 우측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
+| `inverted` | `yeoksamgak`, `inv`, `역삼`, `ㅇㅅ` | 역 직각 삼각형 | `(width, height=5, char='*')` |
+| `inverted_right` | `yeokusamgak`, `rtinv`, `우역`, `ㅇㅇ`| 우측 정렬 역 직각 삼각형 | `(width, height=5, char='*')` |
+| `pyramid` | `pyra`, `피`, `ㅍㄹ` | 중앙 정렬 피라미드 | `(n, char='*')` |
+| `diamond` | `dia`, `다`, `ㄷㅇ` | 다이아몬드 | `(n, char='*')` |
+| `hourglass` | `morae`, `모`, `ㅁㄹ` | 모래시계 | `(n, char='*')` |
+| `arrow` | `hwasal`, `화`, `ㅎㅅ` | 화살표 | `(n, char='*')` |
 
 ## 라이선스
 

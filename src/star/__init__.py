@@ -54,7 +54,7 @@ dia = diamond
 morae = hourglass
 hwasal = arrow
 
-# Korean Hangul Aliases
+# Korean Hangul Aliases (Full)
 삼각형 = triangle
 우측삼각형 = 오른쪽삼각형 = right_triangle
 역삼각형 = inverted
@@ -63,3 +63,23 @@ hwasal = arrow
 다이아몬드 = 다이아 = diamond
 모래시계 = hourglass
 화살표 = arrow
+
+# Korean Short Aliases (줄임말)
+삼 = triangle
+우삼 = right_triangle
+역삼 = inverted
+우역 = inverted_right
+피 = pyramid
+다 = diamond
+모 = hourglass
+화 = arrow
+
+# Korean Choseong Aliases (초성)
+ㅅㄱ = triangle
+ㅇㅅㄱ = right_triangle
+ㅇㅅ = inverted  # YeokSam (Note: WooSam is also ㅇㅅ, but YeokSam takes precedence)
+ㅇㅇ = inverted_right # WooYeok
+ㅍㄹ = pyramid
+ㄷㅇ = diamond
+ㅁㄹ = hourglass
+ㅎㅅ = arrow
