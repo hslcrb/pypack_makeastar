@@ -43,7 +43,7 @@ star.yeoksamgak(5)
 # 4. Inverted Right Triangle (Aliases: yeokusamgak, rinv)
 star.inverted_right(5)
 
-# 5. Pyramid (Aliases: py)
+# 5. Pyramid (Aliases: pyra)
 star.pyramid(5)
 
 # 6. Diamond (Aliases: dia)
@@ -64,7 +64,7 @@ star.arrow(5)
 | `right_triangle` | `usamgak`, `rtri` | Right-aligned triangle | `(width, height=5, char='*')` |
 | `inverted` | `yeoksamgak`, `inv` | Inverted left-aligned triangle | `(width, height=5, char='*')` |
 | `inverted_right` | `yeokusamgak`, `rtinv`| Inverted right-aligned triangle | `(width, height=5, char='*')` |
-| `pyramid` | `py` | Centered pyramid | `(n, char='*')` |
+| `pyramid` | `pyra` | Centered pyramid | `(n, char='*')` |
 | `diamond` | `dia` | Diamond shape | `(n, char='*')` |
 | `hourglass` | `morae` | Hourglass shape | `(n, char='*')` |
 | `arrow` | `hwasal` | Right arrow | `(n, char='*')` |

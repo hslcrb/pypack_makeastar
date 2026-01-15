@@ -43,7 +43,7 @@ star.yeoksamgak(5)
 # 4. 우측 정렬 역삼각형 (별칭: yeokusamgak, rinv)
 star.inverted_right(5)
 
-# 5. 피라미드 (별칭: py)
+# 5. 피라미드 (별칭: pyra)
 star.pyramid(5)
 
 # 6. 다이아몬드 (별칭: dia)
@@ -64,7 +64,7 @@ star.arrow(5)
 | `right_triangle` | `usamgak`, `rtri` | 우측 정렬 직각 삼각형 | `(width, height=5, char='*')` |
 | `inverted` | `yeoksamgak`, `inv` | 역 직각 삼각형 | `(width, height=5, char='*')` |
 | `inverted_right` | `yeokusamgak`, `rtinv`| 우측 정렬 역 직각 삼각형 | `(width, height=5, char='*')` |
-| `pyramid` | `py` | 중앙 정렬 피라미드 | `(n, char='*')` |
+| `pyramid` | `pyra` | 중앙 정렬 피라미드 | `(n, char='*')` |
 | `diamond` | `dia` | 다이아몬드 | `(n, char='*')` |
 | `hourglass` | `morae` | 모래시계 | `(n, char='*')` |
 | `arrow` | `hwasal` | 화살표 | `(n, char='*')` |

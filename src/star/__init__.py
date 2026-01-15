@@ -49,7 +49,7 @@ samgak = tri = triangle
 usamgak = rtri = right_triangle
 yeoksamgak = inv = inverted
 yeokusamgak = rinv = inverted_right
-py = pyramid
+pyra = pyramid
 dia = diamond
 morae = hourglass
 hwasal = arrow
