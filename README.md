@@ -2,293 +2,83 @@
   <img src="logo.png" width="300" alt="makeastar logo" />
 </div>
 
-# makeastar
+# makeastar (별)
 
-A minimalist Python package for printing star patterns with zero boilerplate code.
+반복문 없이 별 찍기 패턴을 생성하고 무한하게 조합하는 초경량 파이썬 패키지.
 
-## Overview
+## 개요
 
-**makeastar** eliminates the need for writing repetitive loops when creating ASCII star patterns. Perfect for Python beginners learning loops or developers who need quick ASCII art generation.
+**makeastar**는 ASCII 별 패턴을 만들 때 지루한 반복문 작성을 없애줍니다. 단순한 출력을 넘어, 이제 당신만의 별 패턴을 만들고 결합할 수 있습니다.
 
-## Features
+## 특징
 
-- **Zero Boilerplate**: Single function calls replace complex nested loops
-- **Type-Safe**: Full type hints with Union types for flexible input
-- **Optimized Performance**: Uses `sys.stdout.write`, generator expressions, and efficient algorithms
-- **Multilingual Support**: English and Korean aliases (including phonetic and Choseong variations)
-- **Flexible Input**: Accepts integers, floats, strings - handles commas, dots, spaces gracefully
-- **Production Ready**: Comprehensive unit tests, CI/CD with GitHub Actions
-- **Lightweight**: Minimal dependencies, pure Python implementation
+- **제로 보일러플레이트**: 복잡한 중첩 루프를 단일 함수 호출이나 연산자로 대체
+- **무한 조합 시스템**: `+` 연산자를 사용하여 여러 패턴을 수직으로 결합 가능
+- **진짜 다이아몬드**: 단순 마름모가 아닌 보석 모양의 다이아몬드 패턴 추가
+- **완벽한 한국어 지원**: 패키지 이름부터 함수, 초성까지 모두 한국어 별칭 지원 (`star.별(5)`, `star.ㅅㄱ(5)`)
+- **최적화된 성능**: `sys.stdout.write`와 제너레이터를 사용하여 극강의 속도 보장
+- **유연한 입력**: 정수, 실수, 문자열 입력을 자동으로 정규화
 
-## Requirements
+## 설치
 
-- Python 3.8 or higher
-
-## Installation
-
-From PyPI (recommended):
 ```bash
 pip install makeastar
 ```
 
-From source:
-```bash
-git clone https://github.com/hslcrb/pypack_makeastar.git
-cd pypack_makeastar
-pip install .
-```
-
-### Docker
-
-You can also run makeastar using Docker:
-```bash
-docker pull ghcr.io/hslcrb/makeastar:latest
-docker run ghcr.io/hslcrb/makeastar:latest
-```
-
-## Quick Start
+## 빠른 시작 (K-개발자 스타일)
 
 ```python
 import star
 
-# Basic usage
-star.pyramid(5)
-star.diamond(7)
-star.triangle(10)
+# 가장 쉬운 방법: 별() 함수 사용
+star.별(5)
 
-# Korean aliases
-star.피라미드(5)
-star.다이아몬드(7)
+# 한국어 초성으로 삼각형 그리기
+star.ㅅㄱ(5)
 
-# Flexible input handling
-star.pyramid("5")           # String input
-star.pyramid(5.8)           # Float input (auto-converted)
-star.draw("pyramid 5")      # Command string parsing
-star.draw("triangle, 10, 5") # Handles various separators
+# 피라미드와 역삼각형 합치기 (조합 시스템)
+p = star.pyramid(5) + star.inverted(5)
+p.draw()
 ```
 
-## Supported Patterns
+## 지원하는 패턴 및 별칭
 
-All functions support custom width/height and character parameters.
+| 패턴 | 기본 함수 | 한국어 별칭 | 초성 별칭 |
+| :--- | :--- | :--- | :--- |
+| 삼각형 | `triangle` | `삼각형`, `삼` | `ㅅㄱ`, `ㅅㄱㅎ` |
+| 우측 삼각형 | `right_triangle` | `우삼`, `오른쪽삼각형` | `ㅇㅅㄱ`, `ㅇㅊㅅㄱ` |
+| 역삼각형 | `inverted` | `역삼`, `역삼각형` | `ㅇㅅ`, `ㅇㅅㄱㅎ` |
+| 피라미드 | `pyramid` | `피라미드`, `피라` | `ㅍㄹ`, `ㅍㄹㅁㄷ` |
+| 다이아몬드 (보석) | `diamond` | `다이아몬드`, `다이아` | `ㄷㅇ`, `ㄷㅇㅇㅁㄷ` |
+| 마름모 (기존 다이아) | `rhombus` | `마름모`, `마` | `ㅁㄹㅁ`, `ㅁㄹㅁㄴ` |
+| 모래시계 | `hourglass` | `모래시계`, `모` | `ㅁㄹ`, `ㅁㄹㅅㄱ` |
+| 화살표 | `arrow` | `화살표`, `화` | `ㅎㅅ`, `ㅎㅅㅍ` |
 
-### 1. Triangle (Left-aligned)
+## 고급: 나만의 별 만들기 (Extensibility)
+
+`makeastar`는 단순한 출력을 넘어 객체 지향적 조합을 지원합니다.
+
 ```python
-star.triangle(5)
-# Output:
-# *
-# **
-# ***
-# ****
-# *****
-```
-**Aliases**: `samgak`, `tri`, `삼각형`, `삼`, `ㅅㄱ`, `ㅅㄱㅎ`
+# 여러 패턴 합치기
+custom = star.삼(5) + star.역삼(5) + star.피라(5)
+custom.draw()
 
-### 2. Right Triangle (Right-aligned)
+# 반복하기
+double_pyramid = star.피라(3) * 2
+double_pyramid.draw()
+
+# 문자 커스터마이징
+star.별(5, char='#')
+```
+
+## API 및 명령어 파싱
+
+`star.draw()` 또는 `star.그려()` 함수를 사용하면 문자열만으로 명령을 내릴 수 있습니다.
 ```python
-star.right_triangle(5)
-# Output:
-#     *
-#    **
-#   ***
-#  ****
-# *****
-```
-**Aliases**: `usamgak`, `rtri`, `우측삼각형`, `오른쪽삼각형`, `우삼`, `ㅇㅅㄱ`, `ㅇㅊㅅㄱㅎ`, `ㅇㄹㅉㅅㄱㅎ`
-
-### 3. Inverted Triangle
-```python
-star.inverted(5)
-# Output:
-# *****
-# ****
-# ***
-# **
-# *
-```
-**Aliases**: `yeoksamgak`, `inv`, `역삼각형`, `역삼`, `ㅇㅅ`, `ㅇㅅㄱㅎ`
-
-### 4. Inverted Right Triangle
-```python
-star.inverted_right(5)
-# Output:
-# *****
-#  ****
-#   ***
-#    **
-#     *
-```
-**Aliases**: `yeokusamgak`, `rtinv`, `rinv`, `우측역삼각형`, `오른쪽역삼각형`, `우역`, `ㅇㅇ`, `ㅇㅊㅇㅅㄱㅎ`, `ㅇㄹㅉㅇㅅㄱㅎ`
-
-### 5. Pyramid
-```python
-star.pyramid(5)
-# Output:
-#     *
-#    ***
-#   *****
-#  *******
-# *********
-```
-**Aliases**: `pyra`, `피라미드`, `피라`, `ㅍㄹ`, `ㅍㄹㅁㄷ`
-
-### 6. Diamond
-```python
-star.diamond(5)
-# Output:
-#     *
-#    ***
-#   *****
-#  *******
-# *********
-#  *******
-#   *****
-#    ***
-#     *
-```
-**Aliases**: `dia`, `다이아몬드`, `다이아`, `다`, `ㄷㅇ`, `ㄷㅇㅇㅁㄷ`
-
-### 7. Hourglass
-```python
-star.hourglass(5)
-# Output:
-# *********
-#  *******
-#   *****
-#    ***
-#     *
-#    ***
-#   *****
-#  *******
-# *********
-```
-**Aliases**: `morae`, `모래시계`, `모`, `ㅁㄹ`, `ㅁㄹㅅㄱ`
-
-### 8. Arrow
-```python
-star.arrow(5)
-# Output:
-# *
-# **
-# ***
-# ****
-# *****
-# ****
-# ***
-# **
-# *
-```
-**Aliases**: `hwasal`, `화살표`, `화`, `ㅎㅅ`, `ㅎㅅㅍ`
-
-## Advanced Usage
-
-### Custom Dimensions
-```python
-# Triangle with custom width and height
-star.triangle(10, 5)   # Width=10, Height=5
-
-# When height is omitted, it defaults to width
-star.triangle(7)       # Width=7, Height=7
+star.그려("삼각형 5")
+star.그려("다이아몬드, 7")
 ```
 
-### Custom Characters
-```python
-star.pyramid(5, char='#')
-star.diamond(7, char='@')
-```
+## 라이선스
 
-### Flexible Input Types
-```python
-# All of these work identically
-star.pyramid(5)
-star.pyramid("5")
-star.pyramid(5.0)
-star.pyramid(5.9)  # Auto-converts to 5
-```
-
-### Command String Parsing
-The `draw()` function accepts flexible command strings:
-```python
-star.draw("pyramid 5")
-star.draw("triangle, 10, 5")
-star.draw("diamond.7")
-star.draw("arrow 3")
-```
-
-### Using Korean Aliases
-```python
-# Full Korean names
-star.피라미드(5)
-star.다이아몬드(7)
-
-# Short forms
-star.피라(5)
-star.다(7)
-
-# Choseong (initial consonants)
-star.ㅍㄹ(5)
-star.ㄷㅇ(7)
-
-# Using Korean package name
-import 별
-별.피라미드(5)
-```
-
-## API Reference
-
-### Triangle Functions
-All triangle functions accept:
-- `width` (int | str | float): Width of the triangle
-- `height` (int | str | float | None): Height (defaults to width if None)
-- `char` (str): Character to use (default: '*')
-
-Functions:
-- `triangle(width, height=None, char='*')` - Left-aligned
-- `right_triangle(width, height=None, char='*')` - Right-aligned
-- `inverted(width, height=None, char='*')` - Inverted left-aligned
-- `inverted_right(width, height=None, char='*')` - Inverted right-aligned
-
-### Symmetric Shape Functions
-All symmetric functions accept:
-- `n` (int | str | float): Size parameter (default: 5)
-- `char` (str): Character to use (default: '*')
-
-Functions:
-- `pyramid(n=5, char='*')` - Centered pyramid
-- `diamond(n=5, char='*')` - Diamond shape
-- `hourglass(n=5, char='*')` - Hourglass shape
-- `arrow(n=5, char='*')` - Right-pointing arrow
-
-### Utility Functions
-- `draw(command: str)` - Parse and execute command strings
-
-## Testing
-
-Run the test suite:
-```bash
-python -m unittest discover tests
-```
-
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## Author
-
-**Rheehose (Rhee Creative)**
-- Email: rheehose@rheehose.com
-- GitHub: [@hslcrb](https://github.com/hslcrb)
-- Copyright 2008-2026
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
-## Changelog
-
-### v1.0 (2026-01-15)
-- Initial stable release
-- 8 pattern types with full Korean/English aliases
-- Flexible input parsing (strings, floats, various separators)
-- Type hints and optimized performance
-- Comprehensive unit tests
-- GitHub Actions CI/CD
+MIT 라이선스. 당신의 창의력을 마음껏 발휘하세요!
