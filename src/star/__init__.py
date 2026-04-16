@@ -85,29 +85,29 @@ def inverted_right(width: Union[int, str], height: Union[int, str, None] = None,
 def pyramid(n: Union[int, str] = 5, char: str = '*') -> Pattern:
     size = _normalize_int(n, 5)
     width = 2 * size - 1
-    return Pattern([f"{char * (2 * i - 1):^{width}}" for i in range(1, size + 1)])
+    return Pattern([f"{char * (2 * i - 1):^{width}}".rstrip() for i in range(1, size + 1)])
 
 @functools.lru_cache(maxsize=128)
 def rhombus(n: Union[int, str] = 5, char: str = '*') -> Pattern:
     size = _normalize_int(n, 5)
     width = 2 * size - 1
-    top = [f"{char * (2 * i - 1):^{width}}" for i in range(1, size + 1)]
+    top = [f"{char * (2 * i - 1):^{width}}".rstrip() for i in range(1, size + 1)]
     return Pattern(top + top[-2::-1])
 
 @functools.lru_cache(maxsize=128)
 def diamond(n: Union[int, str] = 5, char: str = '*') -> Pattern:
     size = _normalize_int(n, 5)
     width = 2 * size - 1
-    crown = [f"{char * (size + 2 * i):^{width}}" for i in range(size // 2)]
+    crown = [f"{char * (size + 2 * i):^{width}}".rstrip() for i in range(size // 2)]
     mid = [char * width]
-    pavillion = [f"{char * (2 * i - 1):^{width}}" for i in range(size - 1, 0, -1)]
+    pavillion = [f"{char * (2 * i - 1):^{width}}".rstrip() for i in range(size - 1, 0, -1)]
     return Pattern(crown + mid + pavillion)
 
 @functools.lru_cache(maxsize=128)
 def hourglass(n: Union[int, str] = 5, char: str = '*') -> Pattern:
     size = _normalize_int(n, 5)
     width = 2 * size - 1
-    top = [f"{char * (2 * i - 1):^{width}}" for i in range(size, 0, -1)]
+    top = [f"{char * (2 * i - 1):^{width}}".rstrip() for i in range(size, 0, -1)]
     return Pattern(top + top[-2::-1])
 
 @functools.lru_cache(maxsize=128)
