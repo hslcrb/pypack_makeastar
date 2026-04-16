@@ -1,31 +1,30 @@
-# Extreme Optimization Plan
+# Publishing Plan (v1.1)
 
-Improve the performance and resource efficiency of `makeastar` through caching, memory management, and algorithmic refinement.
+This plan outlines the steps to build, release, and publish the `makeastar` package.
 
 ## User Review Required
 
-> [!NOTE]
-> All core functionalities remain unchanged. `functools.lru_cache` will be used, which depends on the inputs being hashable (already true for [int](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#43-52), [str](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#14-16)).
+> [!IMPORTANT]
+> To proceed with publishing, you must have:
+> 1. **PyPI Account**: A registered account on [pypi.org](https://pypi.org/).
+> 2. **PyPI API Token**: Generate a token from your PyPI account settings. You will need to provide this when prompted (I will ask for it via a safe method).
+> 3. **GitHub Login**: Ensure you are logged in to the GitHub CLI. Run `gh auth login` if you haven't yet.
 
 ## Proposed Changes
 
-### Core Logic ([src/star/__init__.py](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py))
+### Environment Setup
+- Create a temporary virtual environment (`.venv_publish`) to install `build` and `twine` without affecting the system environment.
+- Install `build` and `twine` inside this venv.
 
-#### [MODIFY] [__init__.py](file:///home/rheehose/문서/개발프로젝트/pypack_makeastar/src/star/__init__.py)
-- **Caching Layer**:
-    - Wrap shape functions ([triangle](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#53-59), [pyramid](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#81-87), etc.) with `@functools.lru_cache` to store pre-computed [Pattern](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#9-32) objects.
-    - Add `_cached_str` and `_cached_lines_str` to the [Pattern](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#9-32) class to avoid repeating `'\n'.join(lines)`.
-- **Memory Optimization**:
-    - Implement `__slots__ = ('lines', '_cached_str')` for the [Pattern](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#9-32) class.
-- **Algorithmic Tweak**:
-    - Optimize string generation by pre-calculating character repeats where possible.
-    - Inline simple calculations.
+### Build and Release
+1. **Build**: Run `python3 -m build` to generate `.whl` and `.tar.gz` artifacts.
+2. **PyPI Upload**: Run `python3 -m twine upload dist/*` using your API token.
+3. **GitHub Release**: 
+   - Tag the current commit as `v1.1`.
+   - Use `gh release create v1.1 dist/* --title "v1.1 - Extreme Optimization & New Shapes" --notes "Release notes based on the latest changes."`
 
 ## Verification Plan
 
-### Automated Tests
-- Run existing [tests/test_star.py](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/tests/test_star.py) to ensure no regression.
-- Benchmarking: Create a script to compare the speed of 1000 pattern generations before and after optimization.
-
 ### Manual Verification
-- Verify that `Pattern + Pattern` still works and uses the cache where possible.
+- Verify the package appears on PyPI.
+- Verify the release and artifacts appear on GitHub.
