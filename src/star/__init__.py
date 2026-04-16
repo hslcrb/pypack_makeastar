@@ -1,136 +1,129 @@
-__version__ = "1.1"
+__version__ = "1.2"
 __author__ = "Rheehose (Rhee Creative)"
 __email__ = "rheehose@rheehose.com"
 
 import sys
 import re
+import functools
 from typing import Optional, Union, List
 
+# Optimized string pool for common paddings
+_SPACE_CACHE = {}
+
+def _get_spaces(n: int) -> str:
+    """Fast space retrieval from cache."""
+    if n not in _SPACE_CACHE:
+        _SPACE_CACHE[n] = ' ' * n
+    return _SPACE_CACHE[n]
+
 class Pattern:
-    """ASCII Star Pattern object supporting composition."""
+    """Memory-efficient and cached ASCII Star Pattern."""
+    __slots__ = ('lines', '_str')
+    
     def __init__(self, lines: List[str]):
-        self.lines = [line.rstrip() for line in lines]
+        self.lines = lines
+        self._str = None  # Cache for __str__ output
 
     def __str__(self) -> str:
-        return '\n'.join(self.lines)
+        if self._str is None:
+            self._str = '\n'.join(self.lines)
+        return self._str
 
     def __add__(self, other: 'Pattern') -> 'Pattern':
-        """Vertical composition: Pattern A + Pattern B."""
         return Pattern(self.lines + other.lines)
 
     def __mul__(self, count: int) -> 'Pattern':
-        """Vertical repetition: Pattern * N."""
         if not isinstance(count, int):
             return NotImplemented
         return Pattern(self.lines * count)
 
     def draw(self) -> None:
-        """Output the pattern to stdout."""
+        """Optimized draw with pre-cached string."""
         if not self.lines:
             return
-        sys.stdout.write('\n'.join(self.lines) + '\n')
-
-def _draw(lines: Union[List[str], 'Pattern']) -> None:
-    """Utility to draw lines or a Pattern object."""
-    if isinstance(lines, Pattern):
-        lines.draw()
-    else:
-        sys.stdout.write('\n'.join(lines) + '\n')
+        sys.stdout.write(str(self) + '\n')
 
 def _calc(w: int, h: int, i: int) -> int:
     return i if w == h else (w * i) // h
 
-def _normalize_int(value: Union[int, float, str, None], default: Optional[int] = None) -> int:
+@functools.lru_cache(maxsize=32)
+def _normalize_int(value: Union[int, float, str, None], default: int = 5) -> int:
     if value is None:
-        return default or 0
+        return default
     try:
         if isinstance(value, str):
             value = value.strip().replace(' ', '')
         return int(float(value))
     except (ValueError, TypeError):
-        return default or 0
+        return default
 
+@functools.lru_cache(maxsize=128)
 def triangle(width: Union[int, str], height: Union[int, str, None] = None, char: str = '*') -> Pattern:
-    """Left-aligned triangle."""
     w = _normalize_int(width, 5)
     h = _normalize_int(height, w)
-    lines = [f"{char * _calc(w, h, i)}" for i in range(1, h + 1)]
-    return Pattern(lines)
+    return Pattern([char * _calc(w, h, i) for i in range(1, h + 1)])
 
+@functools.lru_cache(maxsize=128)
 def right_triangle(width: Union[int, str], height: Union[int, str, None] = None, char: str = '*') -> Pattern:
-    """Right-aligned triangle."""
     w = _normalize_int(width, 5)
     h = _normalize_int(height, w)
-    lines = [f"{char * _calc(w, h, i):>{w}}" for i in range(1, h + 1)]
-    return Pattern(lines)
+    return Pattern([f"{char * _calc(w, h, i):>{w}}" for i in range(1, h + 1)])
 
+@functools.lru_cache(maxsize=128)
 def inverted(width: Union[int, str], height: Union[int, str, None] = None, char: str = '*') -> Pattern:
-    """Inverted left-aligned triangle."""
     w = _normalize_int(width, 5)
     h = _normalize_int(height, w)
-    lines = [f"{char * _calc(w, h, i)}" for i in range(h, 0, -1)]
-    return Pattern(lines)
+    return Pattern([char * _calc(w, h, i) for i in range(h, 0, -1)])
 
+@functools.lru_cache(maxsize=128)
 def inverted_right(width: Union[int, str], height: Union[int, str, None] = None, char: str = '*') -> Pattern:
-    """Inverted right-aligned triangle."""
     w = _normalize_int(width, 5)
     h = _normalize_int(height, w)
-    lines = [f"{char * _calc(w, h, i):>{w}}" for i in range(h, 0, -1)]
-    return Pattern(lines)
+    return Pattern([f"{char * _calc(w, h, i):>{w}}" for i in range(h, 0, -1)])
 
+@functools.lru_cache(maxsize=128)
 def pyramid(n: Union[int, str] = 5, char: str = '*') -> Pattern:
-    """Centered pyramid."""
     size = _normalize_int(n, 5)
     width = 2 * size - 1
-    lines = [f"{char * (2 * i - 1):^{width}}" for i in range(1, size + 1)]
-    return Pattern(lines)
+    return Pattern([f"{char * (2 * i - 1):^{width}}" for i in range(1, size + 1)])
 
+@functools.lru_cache(maxsize=128)
 def rhombus(n: Union[int, str] = 5, char: str = '*') -> Pattern:
-    """Rhombus shape (formerly diamond)."""
     size = _normalize_int(n, 5)
     width = 2 * size - 1
     top = [f"{char * (2 * i - 1):^{width}}" for i in range(1, size + 1)]
     return Pattern(top + top[-2::-1])
 
+@functools.lru_cache(maxsize=128)
 def diamond(n: Union[int, str] = 5, char: str = '*') -> Pattern:
-    """Gem-style diamond shape."""
     size = _normalize_int(n, 5)
     width = 2 * size - 1
-    # Crown part: expanding top
     crown = [f"{char * (size + 2 * i):^{width}}" for i in range(size // 2)]
-    # Mid part: widest point
     mid = [char * width]
-    # Pavillion part: tapering bottom
     pavillion = [f"{char * (2 * i - 1):^{width}}" for i in range(size - 1, 0, -1)]
     return Pattern(crown + mid + pavillion)
 
+@functools.lru_cache(maxsize=128)
 def hourglass(n: Union[int, str] = 5, char: str = '*') -> Pattern:
-    """Hourglass shape."""
     size = _normalize_int(n, 5)
     width = 2 * size - 1
     top = [f"{char * (2 * i - 1):^{width}}" for i in range(size, 0, -1)]
     return Pattern(top + top[-2::-1])
 
+@functools.lru_cache(maxsize=128)
 def arrow(n: Union[int, str] = 5, char: str = '*') -> Pattern:
-    """Right-pointing arrow."""
     size = _normalize_int(n, 5)
     part = [char * i for i in range(1, size + 1)]
     return Pattern(part + part[-2::-1])
 
 def draw(command: Union[str, Pattern, int] = 5) -> None:
-    """
-    Universal draw function. 
-    Accepts command strings, Pattern objects, or integers (default pyramid).
-    """
     if isinstance(command, Pattern):
         command.draw()
         return
-    
     if isinstance(command, int):
         pyramid(command).draw()
         return
-
-    # Normalized parsing
+    
     normalized = re.sub(r'[,.\s]+', ' ', command.strip())
     parts = normalized.split()
     if not parts: return
@@ -155,11 +148,7 @@ def draw(command: Union[str, Pattern, int] = 5) -> None:
         func(*args).draw()
 
 # --- Aliases & Localization ---
-
-# Top level shortcut
 별 = 그려 = 모양 = draw
-
-# Shape Functions
 삼각형 = 삼 = ㅅㄱ = ㅅㄱㅎ = triangle
 우측삼각형 = 오른쪽삼각형 = 우삼 = ㅇㅅㄱ = ㅇㅊㅅㄱ = right_triangle
 역삼각형 = 역삼 = ㅇㅅ = ㅇㅅㄱㅎ = inverted
@@ -170,13 +159,7 @@ def draw(command: Union[str, Pattern, int] = 5) -> None:
 모래시계 = 모 = ㅁㄹ = ㅁㄹㅅㄱ = hourglass
 화살표 = 화 = ㅎㅅ = ㅎㅅㅍ = arrow
 
-# Extra convenience
-tri = triangle
-rtri = right_triangle
-inv = inverted
-rinv = rtinv = inverted_right
-pyra = pyramid
-rhom = rhombus
-dia = diamond
-morae = hourglass
-hwasal = arrow
+tri, rtri, inv, rinv, rtinv, pyra, rhom, dia, morae, hwasal = (
+    triangle, right_triangle, inverted, inverted_right, inverted_right, 
+    pyramid, rhombus, diamond, hourglass, arrow
+)
