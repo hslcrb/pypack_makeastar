@@ -1,30 +1,36 @@
-# Publishing Plan (v1.1)
+# makeastar 차세대 확장 계획 (v2.0 "God Mode")
 
-This plan outlines the steps to build, release, and publish the `makeastar` package.
+기존의 성능과 무한 조합 시스템을 넘어, 진정한 '별 찍기 엔진'으로 거듭나기 위한 기술적 도약 계획입니다.
 
-## User Review Required
+## 사용자 검토 필요 사항
 
 > [!IMPORTANT]
-> To proceed with publishing, you must have:
-> 1. **PyPI Account**: A registered account on [pypi.org](https://pypi.org/).
-> 2. **PyPI API Token**: Generate a token from your PyPI account settings. You will need to provide this when prompted (I will ask for it via a safe method).
-> 3. **GitHub Login**: Ensure you are logged in to the GitHub CLI. Run `gh auth login` if you haven't yet.
+> 연산자 오버로딩 확대 (`|`, `&`, `~`)에 따른 문법 변화와 대규모 패턴 처리 시의 성능 임계점 설정이 필요합니다.
 
-## Proposed Changes
+## 제안된 변경 사항
 
-### Environment Setup
-- Create a temporary virtual environment (`.venv_publish`) to install `build` and `twine` without affecting the system environment.
-- Install `build` and `twine` inside this venv.
+### 1. 조합 시스템의 진화 (Composition 2.0)
+- **수평 결합 (`|`)**: 두 패턴을 좌우로 결합합니다. 높이가 다를 경우 공간을 자동으로 패딩합니다.
+- **오버레이 결합 (`&`)**: 두 패턴을 같은 좌표평면 위에 겹쳐서 출력합니다 (OR 연산).
+- **반전 연산 (`~`)**: 별과 공백을 뒤바꿉니다.
 
-### Build and Release
-1. **Build**: Run `python3 -m build` to generate `.whl` and `.tar.gz` artifacts.
-2. **PyPI Upload**: Run `python3 -m twine upload dist/*` using your API token.
-3. **GitHub Release**: 
-   - Tag the current commit as `v1.1`.
-   - Use `gh release create v1.1 dist/* --title "v1.1 - Extreme Optimization & New Shapes" --notes "Release notes based on the latest changes."`
+### 2. 패턴 변형 및 변환 (Transformation)
+- **회전/대칭**: `.rotate(90/180/270)`, `.flip_h()`, `.flip_v()` 기능을 추가하여 하나의 도형으로 다양한 변주가 가능하게 합니다.
+- **캐릭터 변환**: `.replace(old, new)`를 통해 패턴 생성 후에도 문자를 유연하게 바꿀 수 있습니다.
 
-## Verification Plan
+### 3. 수학적 수식 엔진 (Formula Engine)
+- **[custom(func, w, h)](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/tests/test_star.py#59-63)**: 사용자가 [(x, y)](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#119-149) 좌표를 기반으로 참/거짓 또는 특정 문자를 반환하는 람다식을 전달하여, 원, 하트 등 세상의 모든 도형을 그릴 수 있게 합니다.
+  - 예시: `star.custom(lambda x, y: (x-5)**2 + (y-5)**2 < 25, 10, 10)`
 
-### Manual Verification
-- Verify the package appears on PyPI.
-- Verify the release and artifacts appear on GitHub.
+### 4. 극한의 최적화 2.0 (Optimization)
+- **비트맵 내부 표현**: 패턴의 각 라인을 정수(Bitmask)로 관리하여 오버레이(`&`)나 반전(`~`) 연산을 CPU 비트 연산 수준으로 가속합니다.
+- **지연 렌더링 (Lazy Rendering)**: 실제 [draw()](file:///home/rheehose/%EB%AC%B8%EC%84%9C/%EA%B0%9C%EB%B0%9C%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/pypack_makeastar/src/star/__init__.py#119-149)가 호출될 때까지 최종 문자열 생성을 최대한 늦추고 중간 연산은 수식으로만 관리합니다.
+
+## 검증 계획
+
+### 자동화 테스트
+- `|`, `&` 연산의 기하학적 정확성 검증.
+- 대규모(1000x1000) 패턴 생성 시의 메모리 점유율 체크.
+
+### 수동 검증
+- 복잡하게 조합된 (예: 다이아몬드 옆에 삼각형이 붙고 그 위에 피라미드가 있는) 패턴의 가시성 확인.
